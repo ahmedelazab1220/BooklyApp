@@ -12,6 +12,7 @@ class CustomTextFormField extends StatefulWidget {
     this.prefixIcon,
     this.validator,
     this.initialValue,
+    this.onChanged,
   });
 
   final String hintText;
@@ -21,6 +22,7 @@ class CustomTextFormField extends StatefulWidget {
   final IconData? prefixIcon;
   final String? Function(String?)? validator;
   final String? initialValue;
+  final void Function(String)? onChanged;
 
   @override
   State<CustomTextFormField> createState() => _CustomTextFormFieldState();
@@ -38,6 +40,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onChanged: widget.onChanged,
       validator: widget.validator,
       obscureText: _showPassword!,
       style: Styles.textStyle16,

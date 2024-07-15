@@ -1,6 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:booklyapp/Core/utils/app_router.dart';
 import 'package:booklyapp/Core/utils/images.dart';
+import 'package:booklyapp/Core/utils/loggers.dart';
 import 'package:booklyapp/Core/utils/styles.dart';
 import 'package:booklyapp/Features/auth/presentation/view/widgets/custom_button.dart';
 import 'package:booklyapp/Features/auth/presentation/view/widgets/login_form.dart';
@@ -74,7 +75,11 @@ class _LoginBodyState extends State<LoginBody> {
               child: CustomButton(
                 text: 'Login',
                 onPressed: () {
-                  GoRouter.of(context).push(AppRouter.kTestScreen);
+                  if (emailController.text.trim().isNotEmpty &&
+                      passController.text.trim().isNotEmpty) {
+                    AppLogger.print('go ahead');
+                    GoRouter.of(context).push(AppRouter.kTestScreen);
+                  }
                 },
               ),
             ),

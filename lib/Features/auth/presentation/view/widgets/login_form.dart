@@ -1,4 +1,5 @@
 import 'package:animate_do/animate_do.dart';
+import 'package:booklyapp/Core/utils/loggers.dart';
 import 'package:booklyapp/Core/utils/validator.dart';
 import 'package:booklyapp/Features/auth/presentation/view/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
@@ -38,6 +39,9 @@ class _LoginFormState extends State<LoginForm> {
             prefixIcon: FontAwesomeIcons.lock,
             suffixIcon: true,
             controller: passController,
+            onChanged: (value) {
+              AppLogger.print(value);
+            },
             validator: (value) {
               return Validator.validatePassword(value);
             },
